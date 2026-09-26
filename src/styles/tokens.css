@@ -1,0 +1,7 @@
+@theme inline {
+  --color-brand: #74925b;
+  --color-paper: #f7fcf8;
+  --color-forest: #1a261c;
+  --color-ink: #3f4837;
+  --font-sans: var(--font-hoves);
+}

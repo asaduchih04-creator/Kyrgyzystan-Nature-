@@ -1,0 +1,30 @@
+/* Figma GLASS parameters: radius 4, refraction .8, depth 20,
+   light angle -45, intensity .8, dispersion .5. CSS backdrop blur
+   supports the blur layer; browser refraction is a separate QA limitation. */
+.pill--glass {
+  background: rgb(140 140 140 / 20%);
+  border: 2px solid rgb(255 255 255 / 30%);
+  backdrop-filter: blur(4px);
+  color: #fff;
+}
+.navigation-links .pill--glass:first-child { background: rgb(185 185 185 / 20%); }
+.navigation-links .pill--glass:nth-child(2) { background: rgb(138 138 138 / 20%); }
+.pill--solid { background: #74925b; border: 2px solid #74925b; color: #fff; }
+.pill--outline { background: rgb(212 212 212 / 20%); border: 2px solid rgb(116 146 91 / 50%); color: #74925b; }
+.destination-badge { background: rgb(255 255 255 / 20%); backdrop-filter: blur(5px); }
+
+/* Link feedback leaves the resting design and layout unchanged. */
+.desktop-homepage a {
+  transition: opacity 150ms ease-out;
+}
+
+@media (hover: hover) {
+  .desktop-homepage a:hover { opacity: .88; }
+}
+
+.desktop-homepage a:active { opacity: .72; }
+
+/* Keep the existing focus-visible outline immediate for keyboard users. */
+@media (prefers-reduced-motion: reduce) {
+  .desktop-homepage a { transition: none; }
+}

@@ -1,0 +1,92 @@
+/* Server HTML starts at the same true top-right corner as the WAAPI mask.
+   With scripting disabled or reduced motion, retain the ordinary static Hero. */
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) and (min-width: 768px) {
+  .hero-photo:not([data-hero-initialized]),
+  .hero-overlay:not([data-hero-initialized]) {
+    clip-path: inset(0 0 100% 100%);
+  }
+
+  .hero-photo:not([data-hero-initialized]) img {
+    scale: 1.10;
+  }
+}
+
+.desktop-homepage {
+  --motion-ease: cubic-bezier(.22, 1, .36, 1);
+  --motion-reveal: 700;
+  --motion-short: 600;
+  --motion-fade: 450;
+  --motion-hero: 1600;
+  --motion-welcome: 900;
+  --motion-stack: 2200;
+  --motion-distance: 16;
+  --motion-stagger: 80;
+  --motion-copy-stagger: 120;
+  --motion-heading-stagger: 150;
+  --motion-layer-stagger: 100;
+  --motion-header-delay: 900;
+  --motion-welcome-delay: 1000;
+  --motion-intro-delay: 2200;
+  --motion-nav-delay: 2800;
+  --motion-controls-delay: 500;
+  --motion-stack-delay: 900;
+}
+
+.destination-pill:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+}
+
+.motion-intro {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  background: var(--color-paper);
+  color: var(--color-brand);
+  pointer-events: none;
+}
+
+.motion-intro-ring {
+  width: clamp(112px, 13.75vw, 198px);
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  font-size: 24px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Motion-only adaptation; existing mobile geometry and assets are untouched. */
+@media (max-width: 767px) {
+  .desktop-homepage {
+    --motion-reveal: 500;
+    --motion-short: 400;
+    --motion-fade: 300;
+    --motion-hero: 900;
+    --motion-stack: 1400;
+    --motion-distance: 8;
+    --motion-stagger: 50;
+    --motion-copy-stagger: 80;
+    --motion-heading-stagger: 100;
+    --motion-layer-stagger: 70;
+    --motion-header-delay: 150;
+    --motion-intro-delay: 450;
+    --motion-nav-delay: 650;
+    --motion-controls-delay: 250;
+    --motion-stack-delay: 400;
+  }
+}
+
+/* WAAPI is cancelled by the controller too, including preference changes. */
+@media (prefers-reduced-motion: reduce) {
+  .motion-intro { display: none; }
+  .desktop-homepage [data-motion] {
+    opacity: 1 !important;
+    translate: none !important;
+    scale: none !important;
+    clip-path: none !important;
+  }
+}
